@@ -7,18 +7,22 @@ import { Button, DismissKeyboard, Loader } from '@/components/ui'
 import { IAuthFormData } from '@/shared/types/auth.interface'
 
 import AuthFields from './AuthFields'
+import { useAuthMutations } from './useAuthMutations'
 
 const Auth: FC = () => {
 	const [isReg, setIsReg] = useState(false)
-	const isLoading = false
 
 	const { handleSubmit, reset, control } = useForm<IAuthFormData>({
 		mode: 'onChange'
 	})
 
-	const onSubmit: SubmitHandler<IAuthFormData> = ({ email, password }) => {
-		console.log(email, password)
+	const { isLoading, registerSync, loginSync } = useAuthMutations(reset)
+
+	const onSubmit: SubmitHandler<IAuthFormData> = data => {
+		if (isReg) registerSync(data)
+		else loginSync(data)
 	}
+
 	return (
 		<DismissKeyboard>
 			<View className='mx-2 items-center justify-center h-full'>
