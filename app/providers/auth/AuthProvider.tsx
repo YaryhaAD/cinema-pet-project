@@ -7,8 +7,6 @@ import {
 	useState
 } from 'react'
 
-import { IUser } from '@/shared/types/user.interface'
-
 import { getAccessToken, getUserFromStorage } from '@/services/auth/auth.helper'
 
 import { IContext, TypeUserState } from './auth-provider.interface'
