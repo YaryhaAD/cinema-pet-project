@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Animated, Image, Pressable, Text, View } from 'react-native'
 
-import { GenreList, Rating } from '@/components/ui'
+import { FavoriteButton, GenreList, Rating } from '@/components/ui'
 
 import { useTypedNavigation } from '@/hooks/useTypedNavigation'
 
@@ -40,7 +40,9 @@ const CarouselItem: FC<ICarouselItem> = ({ movie, index, scrollX }) => {
 					className='w-full relative'
 					onPress={() => navigate('Movie', { slug: movie.slug })}
 				>
-					<View className='absolute z-1 right-2 top-2'></View>
+					<View className='absolute z-1 right-2 top-2'>
+						<FavoriteButton movieId={movie._id} />
+					</View>
 					<Image
 						source={getMediaSource(movie.poster)}
 						className='w-full rounded-xl mb-2.5'

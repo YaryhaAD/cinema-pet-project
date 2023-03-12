@@ -1,5 +1,6 @@
 import Auth from '@/components/screens/auth/Auth'
 import Favorites from '@/components/screens/favorites/Favorites'
+import Genre from '@/components/screens/genre/Genre'
 import Home from '@/components/screens/home/Home'
 import Profile from '@/components/screens/profile/Profile'
 import Search from '@/components/screens/search/Search'
@@ -28,6 +29,10 @@ export const userRoutes: IRoute[] = [
 	{
 		name: 'Search',
 		component: Search
+	},
+	{
+		name: 'Genre',
+		component: Genre
 	}
 ]
 
