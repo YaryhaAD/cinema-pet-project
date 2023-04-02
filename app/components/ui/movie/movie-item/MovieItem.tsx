@@ -23,6 +23,7 @@ import { useMovieItemAnimation } from './useMovieItemAnimation'
 
 interface IMovieItem {
 	index: number
+	className?: string
 	style?: ViewStyle
 	movie: IMovie
 }

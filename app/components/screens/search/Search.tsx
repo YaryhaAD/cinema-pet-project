@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import { Field, Heading, Layout, Loader, MovieCatalog } from '@/components/ui'
 

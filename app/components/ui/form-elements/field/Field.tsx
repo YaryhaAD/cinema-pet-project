@@ -8,7 +8,6 @@ const Field = <T extends Record<string, any>>({
 	control,
 	rules,
 	name,
-	className,
 	...rest
 }: IField<T>): JSX.Element => {
 	return (
@@ -32,7 +31,7 @@ const Field = <T extends Record<string, any>>({
 							onChangeText={onChange}
 							onBlur={onBlur}
 							value={(value || '').toString()}
-							className='text-white text-base '
+							className='text-white text-base'
 							{...rest}
 						/>
 					</View>
