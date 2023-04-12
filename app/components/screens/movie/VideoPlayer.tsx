@@ -27,7 +27,7 @@ const VideoPlayer: FC<{ video: string }> = ({ video }) => {
 				icon='play'
 				className='mb-6'
 				onPress={async () => {
-					await videoRef?.current?.presentFullscreenPlayer()
+					await videoRef.current?.presentFullscreenPlayer()
 					await videoRef.current?.playAsync()
 				}}
 			>

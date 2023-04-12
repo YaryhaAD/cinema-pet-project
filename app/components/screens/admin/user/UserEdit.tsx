@@ -1,4 +1,4 @@
-import ExpoCheckbox from 'expo-checkbox/build/ExpoCheckbox'
+import ExpoCheckbox from 'expo-checkbox'
 import { FC } from 'react'
 import { Control, Controller, useForm } from 'react-hook-form'
 import { Pressable, Text, View } from 'react-native'

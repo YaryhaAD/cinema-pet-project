@@ -5,42 +5,46 @@ import { HorizontalList } from '@/components/ui'
 
 import { useTypedNavigation } from '@/hooks/useTypedNavigation'
 
-import { IActor } from '@/shared/types/movie.interface'
+import { IActor } from '@/shared/types/actor.interface'
 
 import { getMediaSource } from '@/utils/getMediaSource'
 
 const ActorCarousel: FC<{ actors: IActor[] }> = ({ actors }) => {
 	const { navigate } = useTypedNavigation()
 
-	const renderItem = ({ item: actor }: ListRenderItemInfo<IActor>) => (
-		<Pressable
-			onPress={() =>
-				navigate('Actor', {
-					slug: actor.slug
-				})
-			}
-			className='flex-row items-center rounded-xl overflow-hidden w-48 mr-4'
-			style={{
-				height: 72,
-				backgroundColor: 'rgba(255, 255, 255, 0.07)'
-			}}
-		>
-			<Image
-				className='h-full'
-				style={{ width: 50, resizeMode: 'cover' }}
-				source={getMediaSource(actor.photo)}
-			/>
-			<View className='p-3 w-11/12'>
-				<Text
-					className='text-white text-base font-medium pr-7'
-					numberOfLines={1}
+	return (
+		<HorizontalList
+			data={actors}
+			renderItem={({ item: actor }: ListRenderItemInfo<IActor>) => (
+				<Pressable
+					onPress={() =>
+						navigate('Actor', {
+							slug: actor.slug
+						})
+					}
+					className='flex-row items-center rounded-xl overflow-hidden w-48 mr-4'
+					style={{
+						height: 72,
+						backgroundColor: 'rgba(255, 255, 255, 0.07)'
+					}}
 				>
-					{actor.name}
-				</Text>
-			</View>
-		</Pressable>
+					<Image
+						className='h-full'
+						style={{ width: 50, resizeMode: 'cover' }}
+						source={getMediaSource(actor.photo)}
+					/>
+					<View className='p-3 w-11/12'>
+						<Text
+							className='text-white text-base font-medium pr-7'
+							numberOfLines={1}
+						>
+							{actor.name}
+						</Text>
+					</View>
+				</Pressable>
+			)}
+		/>
 	)
-	return <HorizontalList data={actors} renderItem={renderItem} />
 }
 
 export default ActorCarousel

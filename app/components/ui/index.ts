@@ -5,6 +5,10 @@ export { default as Toast } from './Toast'
 export { default as AdminNavigation } from './admin/navigation/AdminNavigation'
 export { default as AdminTableHeader } from './admin/table-header/AdminHeader'
 export { default as AdminTable } from './admin/table/AdminTable'
+export {
+	IAdminTableItem,
+	ITableItem
+} from './admin/table/admin-table.interface'
 export { default as BlurButton } from './blur-button/BlurButton'
 export { default as Button } from './button/Button'
 export { default as Dropdown } from './form-elements/dropdown/Dropdown'

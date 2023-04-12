@@ -2,52 +2,49 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import Toast from 'react-native-toast-message'
 
-import { useSearchForm } from '@/components/screens/search/useSearchForm'
-import { ITableItem } from '@/components/ui/admin/table/admin-table.interface'
+import { ITableItem } from '@/components/ui'
 
 import { useTypedNavigation } from '@/hooks/useTypedNavigation'
 
-import { MovieService } from '@/services/movie.service'
+import { GenreService } from '@/services/genre.service'
 
-export const useMovies = () => {
+import { useSearchForm } from '../../search/useSearchForm'
+
+export const useGenres = () => {
 	const { debouncedSearch, control } = useSearchForm()
 
 	const { navigate } = useTypedNavigation()
 
 	const queryData = useQuery(
-		['search movies', debouncedSearch],
-		() => MovieService.getAll(debouncedSearch),
+		['search genres', debouncedSearch],
+		() => GenreService.getAll(debouncedSearch),
 		{
 			select: data =>
 				data.map(
-					(movie): ITableItem => ({
-						_id: movie._id,
+					(genre): ITableItem => ({
+						_id: genre._id,
 						editNavigate: () =>
-							navigate('MovieEdit', {
-								id: movie._id
+							navigate('GenreEdit', {
+								id: genre._id
 							}),
-						items: [
-							movie.title,
-							`${movie.genres[0].name} ${movie.genres.length > 1 ? '...' : ''}`,
-							String(movie.rating)
-						]
+						items: [genre.name, genre.slug]
 					})
 				)
 		}
 	)
 
 	const { mutateAsync: createAsync } = useMutation(
-		['create movie'],
-		() => MovieService.create(),
+		['create genre'],
+		() => GenreService.create(),
 		{
 			onSuccess: async _id => {
 				Toast.show({
 					type: 'success',
-					text1: 'Create movie',
+					text1: 'Create genre',
 					text2: 'create was successful'
 				})
 
-				navigate('MovieEdit', {
+				navigate('GenreEdit', {
 					id: _id
 				})
 			}
@@ -55,13 +52,13 @@ export const useMovies = () => {
 	)
 
 	const { mutateAsync: deleteAsync } = useMutation(
-		['delete movie'],
-		(movieId: string) => MovieService.delete(movieId),
+		['delete genre'],
+		(genreId: string) => GenreService.delete(genreId),
 		{
 			onSuccess: async () => {
 				Toast.show({
 					type: 'success',
-					text1: 'Delete movie',
+					text1: 'Delete genre',
 					text2: 'delete was successful'
 				})
 

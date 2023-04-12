@@ -7,7 +7,6 @@ export type TypeRootStackParamList = {
 	Favorites: undefined
 	Trending: undefined
 	Search: undefined
-	Screen404: undefined
 	Movie: {
 		slug: string
 	}

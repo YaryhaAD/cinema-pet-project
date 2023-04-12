@@ -21,14 +21,14 @@ import Rating from './Rating'
 import FavoriteButton from './favorite-button/FavoriteButton'
 import { useMovieItemAnimation } from './useMovieItemAnimation'
 
+const ReanimatedPressable = Animated.createAnimatedComponent(Pressable)
+
 interface IMovieItem {
 	index: number
 	className?: string
 	style?: ViewStyle
 	movie: IMovie
 }
-
-const ReanimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 const MovieItem: FC<IMovieItem> = ({ index, movie, style }) => {
 	const { navigate } = useTypedNavigation()

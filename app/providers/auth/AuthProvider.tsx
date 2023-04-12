@@ -15,7 +15,7 @@ export const AuthContext = createContext({} as IContext)
 
 SplashScreen.preventAutoHideAsync()
 
-const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
+const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const [user, setUser] = useState<TypeUserState>(null)
 
 	useEffect(() => {

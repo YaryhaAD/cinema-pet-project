@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
-import { Toast } from 'react-native-toast-message/lib/src/Toast'
+import Toast from 'react-native-toast-message'
 
 import { useTypedRoute } from '@/hooks/useTypedRoute'
 
@@ -24,7 +24,7 @@ export const useUserEdit = (setValue: UseFormSetValue<IUserEditInput>) => {
 		}
 	)
 
-	const { invalidateQueries } = useQueryClient()
+	const queryClient = useQueryClient()
 
 	const { mutateAsync } = useMutation(
 		['update user'],
@@ -36,7 +36,8 @@ export const useUserEdit = (setValue: UseFormSetValue<IUserEditInput>) => {
 					text1: 'Update user',
 					text2: 'update was successful'
 				})
-				await invalidateQueries(['search users'])
+
+				await queryClient.invalidateQueries(['search users'])
 			}
 		}
 	)

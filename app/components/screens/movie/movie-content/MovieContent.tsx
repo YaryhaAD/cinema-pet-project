@@ -1,6 +1,6 @@
 import { useScrollToTop } from '@react-navigation/native'
 import { FC, useRef } from 'react'
-import { Animated, ScrollView, Text, View } from 'react-native'
+import { Animated, ScrollView, View } from 'react-native'
 
 import VideoPlayer from '../VideoPlayer'
 import { IMovieComponent } from '../movie-page.interface'

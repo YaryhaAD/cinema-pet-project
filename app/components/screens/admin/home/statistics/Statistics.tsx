@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import CountUsers from './CountUsers'
 import PopularMovies from './PopularMovies'

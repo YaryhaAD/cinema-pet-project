@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import { FC } from 'react'
-import { Animated, Image, StyleSheet, Text, View } from 'react-native'
+import { Animated, Image, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { getMediaSource } from '@/utils/getMediaSource'
@@ -16,10 +16,10 @@ const MovieBackground: FC<IMovieComponent> = ({ movie, y }) => {
 		outputRange: [2, 1, 1],
 		extrapolate: 'clamp'
 	})
+
 	const translateY = y.interpolate({
 		inputRange,
-		outputRange: [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.01],
-		extrapolate: 'clamp'
+		outputRange: [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.01]
 	})
 
 	return (

@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
-import { Toast } from 'react-native-toast-message/lib/src/Toast'
+import Toast from 'react-native-toast-message'
 
 import { IAuthFormData } from '@/shared/types/auth.interface'
 

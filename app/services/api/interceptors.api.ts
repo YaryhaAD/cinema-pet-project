@@ -1,11 +1,13 @@
 import axios from 'axios'
 
+import { errorCatch } from '@/services/api/error.api'
+import { getNewTokens } from '@/services/api/helper.auth'
+import {
+	deleteTokensStorage,
+	getAccessToken
+} from '@/services/auth/auth.helper'
+
 import { API_URL } from '@/config/api.config'
-
-import { deleteTokensStorage, getAccessToken } from '../auth/auth.helper'
-
-import { errorCatch } from './error.api'
-import { getNewTokens } from './helper.auth'
 
 const instance = axios.create({
 	baseURL: API_URL,
@@ -47,5 +49,4 @@ instance.interceptors.response.use(
 		throw error
 	}
 )
-
 export default instance

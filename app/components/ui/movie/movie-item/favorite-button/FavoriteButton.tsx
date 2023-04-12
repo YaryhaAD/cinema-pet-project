@@ -1,7 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import cn from 'clsx'
 import { FC } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import Animated, { withSpring } from 'react-native-reanimated'
 
 import BlurButton from '@/components/ui/blur-button/BlurButton'
@@ -16,13 +15,13 @@ interface IFavoriteButton {
 
 const FavoriteButton: FC<IFavoriteButton> = ({ isSmall = false, movieId }) => {
 	const { isSmashed, toggleFavorite } = useFavorite(movieId)
-	const { outlineStyle, fieldStyle, liked } = useFavoriteAnimation(isSmashed)
+	const { outlineStyle, fillStyle, liked } = useFavoriteAnimation(isSmashed)
 
 	return (
 		<BlurButton
 			isSmall={isSmall}
 			onPress={() => {
-				liked.value = withSpring(liked.value === 1 ? 0 : 1) //side effect before query (not required)
+				liked.value = withSpring(liked.value === 1 ? 0 : 1)
 				toggleFavorite()
 			}}
 		>
@@ -37,7 +36,7 @@ const FavoriteButton: FC<IFavoriteButton> = ({ isSmall = false, movieId }) => {
 				/>
 			</Animated.View>
 
-			<Animated.View style={fieldStyle}>
+			<Animated.View style={fillStyle}>
 				<MaterialCommunityIcons
 					name='heart'
 					size={isSmall ? 19 : 22}

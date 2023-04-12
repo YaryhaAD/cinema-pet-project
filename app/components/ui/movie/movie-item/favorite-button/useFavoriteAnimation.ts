@@ -9,18 +9,27 @@ import {
 
 export const useFavoriteAnimation = (isSmashed: boolean) => {
 	const liked = useSharedValue(0)
+
 	useEffect(() => {
 		liked.value = withSpring(isSmashed ? 1 : 0)
 	}, [isSmashed])
+
 	const outlineStyle = useAnimatedStyle(() => ({
 		transform: [
-			{ scale: interpolate(liked.value, [0, 1], [1, 0], Extrapolate.CLAMP) }
+			{
+				scale: interpolate(liked.value, [0, 1], [1, 0], Extrapolate.CLAMP)
+			}
 		]
 	}))
-	const fieldStyle = useAnimatedStyle(() => ({
-		transform: [{ scale: liked.value }],
+
+	const fillStyle = useAnimatedStyle(() => ({
+		transform: [
+			{
+				scale: liked.value
+			}
+		],
 		opacity: liked.value
 	}))
 
-	return { liked, fieldStyle, outlineStyle }
+	return { liked, fillStyle, outlineStyle }
 }

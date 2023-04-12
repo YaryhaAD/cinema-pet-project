@@ -2,12 +2,13 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import Toast from 'react-native-toast-message'
 
-import { useSearchForm } from '@/components/screens/search/useSearchForm'
-import { ITableItem } from '@/components/ui/admin/table/admin-table.interface'
+import { ITableItem } from '@/components/ui'
 
 import { useTypedNavigation } from '@/hooks/useTypedNavigation'
 
 import { ActorService } from '@/services/actor.service'
+
+import { useSearchForm } from '../../search/useSearchForm'
 
 export const useActors = () => {
 	const { debouncedSearch, control } = useSearchForm()

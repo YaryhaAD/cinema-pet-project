@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { ScrollView, Text, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
 import {
 	AdminNavigation,
@@ -13,7 +13,6 @@ import {
 } from '@/components/ui'
 
 import { IGenreEditInput } from '@/shared/types/genre.interface'
-import { IUserEditInput } from '@/shared/types/user.interface'
 
 import { generateSlug } from '@/utils/generateSlug'
 
@@ -26,9 +25,10 @@ const GenreEdit: FC = () => {
 		})
 
 	const { isLoading, onSubmit } = useGenreEdit(setValue)
+
 	return (
 		<Layout isHasPadding>
-			<AdminNavigation title='Edit user' isBackButton />
+			<AdminNavigation title='Edit genre' isBackButton />
 			<View>
 				{isLoading ? (
 					<Loader />
@@ -42,6 +42,7 @@ const GenreEdit: FC = () => {
 								required: 'Name is required!'
 							}}
 						/>
+
 						<SlugWrapper
 							generate={() => {
 								setValue('slug', generateSlug(getValues('name')))
@@ -56,6 +57,7 @@ const GenreEdit: FC = () => {
 								}}
 							/>
 						</SlugWrapper>
+
 						<Controller
 							control={control}
 							name='description'
@@ -86,6 +88,7 @@ const GenreEdit: FC = () => {
 								}
 							}}
 						/>
+
 						<Button onPress={handleSubmit(onSubmit)} icon='pen-tool'>
 							Update
 						</Button>
